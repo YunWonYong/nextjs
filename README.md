@@ -134,3 +134,7 @@ BI 사이트라 ssr의 이점 필요 없다 생각되지만... 풀 스택을 지
     >   /border/gmae과 /border/qna라는 url이 있을 때 app/border/[slug] 폴더 구조로 만듬
 2.  사용 방법
     >   leaf segment의 폴더명이 [slug]일 때 page.tsx 컴포넌트 props에 params 프로퍼티 안에 있는 slug 라는 프로퍼티로 정보를 받을 수 있음 (params.[folderName])
+3.  static page 생성
+    >   dynamic folder의 page.tsx 컴포넌트에서 generateStaticParams 함수를 정의해서 export 한다.   
+    >   * generateStaticParams 함수의 반환 값(return)은 static page를 만들고 싶은 path을 object 형태로 만든 후 배열로 반환 하면 된다. 이 때 object의 key는 dynamic folder명이고 value는 path이다.
+    >   * ex) [ { slug: game }, { slug: qna } ]

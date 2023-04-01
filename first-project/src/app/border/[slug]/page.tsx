@@ -16,4 +16,16 @@ const BorderSection: FC<BorderSectionPropsType> = ({ params }) => {
     );
 };
 
+const generateStaticParams = () => {
+    const folderName = "slug";
+    return ["game", "qna"].map((path: string) => { 
+        return {
+            [folderName]: path 
+        };
+    });
+};
+
 export default BorderSection;
+export {
+    generateStaticParams
+};
