@@ -129,3 +129,8 @@ BI 사이트라 ssr의 이점 필요 없다 생각되지만... 풀 스택을 지
         >   global-error => root segment의 error ui (리엑트 컴포넌트인 ErrorBoundary 사용)   
         >   loading => 해당 segment의 loading ui (리엑트 컴포넌트인 Suspense  사용)    
         >   not-fount => 부모 segment에서 자식 segment가 없을 때 보여지는 ui (리엑트 컴포넌트인 ErrorBoundary 사용)
+### 4. dynamic routing 폴더 
+1.  폴더명을 대괄호 안에 넣는다.
+    >   /border/gmae과 /border/qna라는 url이 있을 때 app/border/[slug] 폴더 구조로 만듬
+2.  사용 방법
+    >   leaf segment의 폴더명이 [slug]일 때 page.tsx 컴포넌트 props에 params 프로퍼티 안에 있는 slug 라는 프로퍼티로 정보를 받을 수 있음 (params.[folderName])
