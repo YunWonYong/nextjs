@@ -104,3 +104,16 @@ BI 사이트라 ssr의 이점 필요 없다 생각되지만... 풀 스택을 지
 1. 사용자가 요청한 웹 사이트를 얼마나 빠르게 제공할 수 있는 지
 ### 2. TTI (Time To Interact)
 1. 사용자가 요청한 웹 사이트의 정적 파일에 얼마나 빠르게 동적 기능을 제공할 수 있는 지
+
+## nextjs 13 version route
+### 1. 이전 버전에선 정적 페이지를 재사용하기 어려웠다.
+1. 이전엔 정적 페이지에서 다른 페이지로 이동 시(url 변경) 전부 요청했다.
+2. 13버전의 라우팅 시 url에 맞는 각각의 레이아웃을 설정 및 재사용할 수 있어 정적 페이지의 재사용성을 높임
+### 2. static routing 폴더 구조 
+1. 계층형 폴더 구조로 url로 접근할 수 있음
+2. url이 /border/gmae, /border/qna와 같다면 폴더 구조는 다음과 같다. (경로)
+    >   / => app 폴더 (Root segment)    
+    >   /border => app/border 폴더 (segment)    
+    >   /border/game => app/border/game 폴더 (leaf segment)   
+    >   /border/qna => app/border/qna 폴더 (leaf segment)
+3. 페이지는 url의 leaf segment가 되는 폴더에 page.{js|jsx|tsx} 파일이다.
