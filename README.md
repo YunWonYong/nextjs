@@ -117,3 +117,15 @@ BI 사이트라 ssr의 이점 필요 없다 생각되지만... 풀 스택을 지
     >   /border/game => app/border/game 폴더 (leaf segment)   
     >   /border/qna => app/border/qna 폴더 (leaf segment)
 3. 페이지는 url의 leaf segment가 되는 폴더에 page.{js|jsx|tsx} 파일이다.
+### 3. file conventions
+1. 파일명과 확장자는 정해져있다.
+    1. 확장자는 js, jsx, tsx 지원
+    2. 파일명
+        >   page => leaf segment가 보여줄 페이지   
+        >   route => 서버 측에서 접근할 포인트   
+        >   layout => 특정 segment에서 공유할 정적 layout    
+        >   template => layout파일과 다른점은 동적 layout임 (하위 segment들을 리렌더링 시킴)    
+        >   error => 해당 segment의 error ui (리엑트 컴포넌트인 ErrorBoundary 사용)   
+        >   global-error => root segment의 error ui (리엑트 컴포넌트인 ErrorBoundary 사용)   
+        >   loading => 해당 segment의 loading ui (리엑트 컴포넌트인 Suspense  사용)    
+        >   not-fount => 부모 segment에서 자식 segment가 없을 때 보여지는 ui (리엑트 컴포넌트인 ErrorBoundary 사용)
