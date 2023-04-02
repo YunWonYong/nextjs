@@ -131,7 +131,13 @@ BI 사이트라 ssr의 이점 필요 없다 생각되지만... 풀 스택을 지
         >   not-fount => 부모 segment에서 자식 segment가 없을 때 보여지는 ui (리엑트 컴포넌트인 ErrorBoundary 사용)
 ### 4. dynamic routing 폴더 
 1.  폴더명을 대괄호 안에 넣는다.
-    >   /border/gmae과 /border/qna라는 url이 있을 때 app/border/[slug] 폴더 구조로 만듬
+    1. dynamic Segment
+        >   /border/gmae과 /border/qna라는 url이 있을 때 app/border/[slug] 
+    2. Catch-all Segment
+        >   한개 이상의 하위 segment가 있을 때 반응 /[...not-found] => app/[...not-found]    
+        >   * 해당 경로에서 page 파일을 만든 후 notFound 함수를 호출하면 프로젝트의 모든 not-found page를 만들 수 있음
+    3. Optional Catch-all Segment
+        >   현재 segment를 포함하여 모든 segment가 반응 /[[...folderName]] => app/[[...folderName]]
 2.  사용 방법
     >   leaf segment의 폴더명이 [slug]일 때 page.tsx 컴포넌트 props에 params 프로퍼티 안에 있는 slug 라는 프로퍼티로 정보를 받을 수 있음 (params.[folderName])
 3.  static page 생성
