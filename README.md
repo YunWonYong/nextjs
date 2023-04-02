@@ -148,3 +148,12 @@ BI 사이트라 ssr의 이점 필요 없다 생각되지만... 풀 스택을 지
 ### 5. Route Groups
 1. 폴더명을 소괄호 안에 넣는다.
     >  폴더를 (folderName)으로 만들면 segment에 포함되진 않지만 하위 segment에 공통적인 컴포넌트들(layout, error, template 같은 것들)을 공유할 수 있음
+
+### 6. notfound page
+1.  segment별 not-found page
+    >   not-found 파일을 만든 후 page 파일이나 자식 segment(폴더)의 page 파일에서 notFound 함수를 호출 (next/navigation 패키지에 있음)
+    >   * dynamic routing이 필수적인 것 같음
+2.  Global not-found page
+    >   Catch-all Segment를 이용하여 만듬
+    >   * app/[...not-found] 폴더를 만든 후 page 파일 만들고 notFound 함수를 호출하면 끝
+    
