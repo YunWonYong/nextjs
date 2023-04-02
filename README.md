@@ -144,3 +144,7 @@ BI 사이트라 ssr의 이점 필요 없다 생각되지만... 풀 스택을 지
     >   dynamic folder의 page.tsx 컴포넌트에서 generateStaticParams 함수를 정의해서 export 한다.   
     >   * generateStaticParams 함수의 반환 값(return)은 static page를 만들고 싶은 path을 object 형태로 만든 후 배열로 반환 하면 된다. 이 때 object의 key는 dynamic folder명이고 value는 path이다.
     >   * ex) [ { slug: game }, { slug: qna } ]
+
+### 5. Route Groups
+1. 폴더명을 소괄호 안에 넣는다.
+    >  폴더를 (folderName)으로 만들면 segment에 포함되진 않지만 하위 segment에 공통적인 컴포넌트들(layout, error, template 같은 것들)을 공유할 수 있음
