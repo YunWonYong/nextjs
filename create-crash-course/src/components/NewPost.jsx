@@ -1,5 +1,11 @@
 import classes from "./NewPost.module.css";
+
 const NewPost = () => {
+    const changeBodyHandler = (event) => {
+        const { target } = event;
+        const { value } = target;
+        console.log(value); 
+    };
     return (
         <form 
             className={ classes.form }
@@ -14,6 +20,7 @@ const NewPost = () => {
                     id="body"
                     required
                     rows={ 3 }
+                    onChange={ changeBodyHandler }
                 />
             </p>
             <p>
