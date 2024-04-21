@@ -1,9 +1,9 @@
+import Post from "./components/Post";
+
 // root component
 const App = () => {
     return (
-        <div>
-            Hello world!!!
-        </div>
+        <Post />    
     );
 }
 
