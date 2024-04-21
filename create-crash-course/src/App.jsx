@@ -3,7 +3,12 @@ import Post from "./components/Post";
 // root component
 const App = () => {
     return (
-        <Post />    
+        <main>
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+        </main>
     );
 }
 
