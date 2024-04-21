@@ -1,7 +1,7 @@
 import classes from "./Post.module.css";
 const Post = ({ author, body }) => {
     return (
-        <div
+        <li
             className={ classes.post }
             // className="post"
             // style={{
@@ -23,7 +23,7 @@ const Post = ({ author, body }) => {
                     body
                 }
             </p>
-        </div>        
+        </li>        
     );
 };
 
