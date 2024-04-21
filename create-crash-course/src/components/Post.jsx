@@ -1,12 +1,24 @@
+import classes from "./Post.module.css";
 const Post = ({ author, body }) => {
     return (
-        <div>
-            <p>
+        <div
+            className={ classes.post }
+            // className="post"
+            // style={{
+            //     color: "red",
+            //     textAlign: "left"
+            // }}
+        >
+            <p
+                className={ classes.author }
+            >
                 {
                     author  
                 }
             </p>
-            <p>
+            <p
+                className={ classes.text }
+            >
                 {
                     body
                 }
