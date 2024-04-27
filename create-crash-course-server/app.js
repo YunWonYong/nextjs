@@ -20,6 +20,11 @@ app.use((_, response, next) => {
 
 app.get("/posts", async (_, response) => {
     const storedPosts = await getStoredPosts();
+    await new Promise((resolve) => {
+        setTimeout(() => {
+            resolve();
+        }, 1500);
+    });
     response.json({ posts: storedPosts });
 });
 
