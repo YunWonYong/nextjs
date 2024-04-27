@@ -21,25 +21,19 @@ const PostList = () => {
     const authorChangeHandler = (event) => {
         setEnterdAuthor(event.target.value);
     };
-    
-    // conditional rendering case 2
-    let modalContent;
-
-    if (modalIsVisible) {
-        modalContent = <Modal
-                            onClose={ hideModalHandler }
-                        >
-                            <NewPost 
-                                onBodyChange={ bodyChangeHandler }
-                                onAuthorChange={ authorChangeHandler }
-                            />
-                        </Modal>
-    }
     return (
         <>  
             {
-                // conditional rendering case 2
-                modalContent
+                // conditional rendering case 3
+                modalIsVisible &&
+                    <Modal
+                        onClose={ hideModalHandler }
+                    >
+                        <NewPost 
+                            onBodyChange={ bodyChangeHandler }
+                            onAuthorChange={ authorChangeHandler }
+                        />
+                    </Modal>
             }
             <ul
                 className={ classes.posts }
