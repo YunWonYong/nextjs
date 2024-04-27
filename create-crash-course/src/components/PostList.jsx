@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import classes from "./PostList.module.css";
 
@@ -7,13 +7,15 @@ import NewPost from "./NewPost";
 import Post from "./Post";
 
 const PostList = ({ isPosting, onStopPosting }) => {
-    const [ posts, setPosts ] = useState([
-        // {
-        //     body: "Check out the full course!",
-        //     author: "Manuel"
-        // }
-    ]);
-    
+    const [ posts, setPosts ] = useState([]);
+    useEffect(() => {
+        const fetchPosts = async () => {
+            const response = await fetch("http://localhost:8080/posts");
+            const data = await response.json();
+            setPosts(data.posts);
+        };
+        fetchPosts();
+    }, []);
     const addPostHandler = (postData) =>{
         fetch("http://localhost:8080/posts", {
             method: "POST",
