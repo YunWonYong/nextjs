@@ -5,7 +5,7 @@ import PostList from "./components/PostList";
 
 // root component
 const App = () => {
-    const [ modalIsVisible, setModalIsVisible ] = useState(true);
+    const [ modalIsVisible, setModalIsVisible ] = useState(false);
     const hideModalHandler = () => {
         setModalIsVisible(false);
     };
