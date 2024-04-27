@@ -1,9 +1,33 @@
+import { useState } from "react";
+
 import classes from "./NewPost.module.css";
 
-const NewPost = (props) => {
+const NewPost = ({ onCancel  }) => {
+    const [ enterdBody, setEnterdBody ] = useState("");
+    const [ enterdAuthor, setEnterdAuthor ] = useState("");
+
+    const bodyChangeHandler = (event) => {
+        setEnterdBody(event.target.value);
+    };
+
+    const authorChangeHandler = (event) => {
+        setEnterdAuthor(event.target.value);
+    };
+
+    const submitHandler = (event) => {
+        event.preventDefault();
+        const postData = {
+            body: enterdBody,
+            auth: enterdAuthor,
+        };
+        console.log(postData);
+        onCancel();
+    };
+
     return (
         <form 
             className={ classes.form }
+            onSubmit={ submitHandler }
         >
             <p>
                 <label
@@ -15,7 +39,7 @@ const NewPost = (props) => {
                     id="body"
                     required
                     rows={ 3 }
-                    onChange={ props.onBodyChange }
+                    onChange={ bodyChangeHandler }
                 />
             </p>
             <p>
@@ -28,8 +52,23 @@ const NewPost = (props) => {
                     type="text" 
                     id="name" 
                     required
-                    onChange={ props.onAuthorChange }
+                    onChange={ authorChangeHandler }
                 />
+            </p>
+            <p
+                className={ classes.actions }
+            >
+                <button
+                    type="button"
+                    onClick={ onCancel }
+                >
+                    Cancel
+                </button>
+                <button
+                    type="submit"
+                >
+                    Submit
+                </button>
             </p>
         </form>
     );
