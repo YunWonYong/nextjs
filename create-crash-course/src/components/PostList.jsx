@@ -6,8 +6,13 @@ import NewPost from "./NewPost";
 import Post from "./Post";
 
 const PostList = () => {
+    const [ modalIsVisible, setModalIsVisible ] = useState(true);
     const [ enterdBody, setEnterdBody ] = useState("");
     const [ enterdAuthor, setEnterdAuthor ] = useState("");
+
+    const hideModalHandler = () => {
+        setModalIsVisible(false);
+    };
 
     const bodyChangeHandler = (event) => {
         setEnterdBody(event.target.value);
@@ -17,13 +22,20 @@ const PostList = () => {
         setEnterdAuthor(event.target.value);
     };
     return (
-        <>
-            <Modal>
-                <NewPost 
-                    onBodyChange={ bodyChangeHandler }
-                    onAuthorChange={ authorChangeHandler }
-                />
-            </Modal>
+        <>  
+            {
+                // conditional rendering case 1
+                modalIsVisible
+                    ?   <Modal
+                            onClose={ hideModalHandler }
+                        >
+                            <NewPost 
+                                onBodyChange={ bodyChangeHandler }
+                                onAuthorChange={ authorChangeHandler }
+                            />
+                        </Modal>
+                    :   null 
+            }
             <ul
                 className={ classes.posts }
             >

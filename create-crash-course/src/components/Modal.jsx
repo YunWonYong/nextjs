@@ -1,17 +1,18 @@
 import classes from "./Modal.module.css";
 
-const Modal = (props) => {
+const Modal = ({ children, onClose }) => {
     return (
         <>
             <div 
-                className={ classes.backdrop } 
+                className={ classes.backdrop }
+                onClick={ onClose }
             />
             <dialog
                 className={ classes.modal }
                 open={ true }
             >
                 {
-                    props.children
+                    children
                 }
             </dialog>
         </>
