@@ -5,14 +5,9 @@ import Modal from "./Modal";
 import NewPost from "./NewPost";
 import Post from "./Post";
 
-const PostList = () => {
-    const [ modalIsVisible, setModalIsVisible ] = useState(true);
+const PostList = ({ isPosting, onStopPosting }) => {
     const [ enterdBody, setEnterdBody ] = useState("");
     const [ enterdAuthor, setEnterdAuthor ] = useState("");
-
-    const hideModalHandler = () => {
-        setModalIsVisible(false);
-    };
 
     const bodyChangeHandler = (event) => {
         setEnterdBody(event.target.value);
@@ -25,9 +20,9 @@ const PostList = () => {
         <>  
             {
                 // conditional rendering case 3
-                modalIsVisible &&
+                isPosting &&
                     <Modal
-                        onClose={ hideModalHandler }
+                        onClose={ onStopPosting }
                     >
                         <NewPost 
                             onBodyChange={ bodyChangeHandler }
