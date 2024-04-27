@@ -1,16 +1,6 @@
-import { useState } from "react";
-
 import classes from "./NewPost.module.css";
 
-const NewPost = () => {
-    const stateData = useState("");
-    const enterdBody = stateData[0]; // current value
-    const setEnterdBody = stateData[1]; // state updating function
-    const changeBodyHandler = (event) => {
-        const { target } = event;
-        const { value } = target; 
-        setEnterdBody(value);
-    };
+const NewPost = (props) => {
     return (
         <form 
             className={ classes.form }
@@ -25,13 +15,8 @@ const NewPost = () => {
                     id="body"
                     required
                     rows={ 3 }
-                    onChange={ changeBodyHandler }
+                    onChange={ props.onBodyChange }
                 />
-            </p>
-            <p>
-                {
-                    enterdBody
-                }
             </p>
             <p>
                 <label
@@ -43,6 +28,7 @@ const NewPost = () => {
                     type="text" 
                     id="name" 
                     required
+                    onChange={ props.onAuthorChange }
                 />
             </p>
         </form>
