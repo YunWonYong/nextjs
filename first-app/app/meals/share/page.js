@@ -1,4 +1,7 @@
+
+import { shareMeal } from "@/lib/actions";
 import ImagePicker from "@/components/meals/imagePicker";
+import MealsFormSubmit from "@/components/meals/form";
 import classes from "./page.module.css";
 
 const MealsShare = () => {
@@ -13,7 +16,10 @@ const MealsShare = () => {
                 </p>
             </header>
             <main className={ classes.main } >
-                <form className={ classes.form } >
+                <form 
+                    className={ classes.form } 
+                    action={ shareMeal }
+                >
                     <div className={ classes.row } >
                         <p>
                             <label htmlFor="name" >Your name</label>
@@ -42,7 +48,7 @@ const MealsShare = () => {
                         required
                     />
                     <p className={ classes.actions } >
-                        <button type="submit">Share Meal</button>
+                        <MealsFormSubmit />
                     </p>
                 </form>
             </main>
