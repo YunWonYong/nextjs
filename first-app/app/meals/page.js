@@ -16,7 +16,7 @@ const MealsContext = async () => {
 };
 
 
-const Meals = async () => {
+const Meals = () => {
     
     return (
         <>
