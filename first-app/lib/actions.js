@@ -20,7 +20,7 @@ const isInvalidEmal = (email) => {
     return isInvalidText(email) || !email.includes("@");
 };
 
-const shareMeal = async (formData) => {
+const shareMeal = async (prevState, formData) => {
     const meal = {
         title: formData.get("title"),
         summary: formData.get("summary"),
@@ -35,7 +35,9 @@ const shareMeal = async (formData) => {
         isInvalidEmal(meal.email) ||
         (!meal.image || meal.image.size === 0)
     ) {
-        throw new Error("Invalid input");
+        return {
+            message: "Invalid input."
+        };
     }
     console.log(meal);
     await saveMeal(meal);
