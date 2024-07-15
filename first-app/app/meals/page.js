@@ -6,6 +6,12 @@ import classes from "./page.module.css";
 import Grid from "@/components/meals/grid";
 import { getMeals } from "@/lib/meals";
 
+// 정적 메타데이타 설정
+const metadata = {
+    title: "All Meals",
+    description: "Browse the delicious meals shared by our vibrant community."
+};
+
 const MealsContext = async () => {
     const meals = await getMeals();
     return (
@@ -54,3 +60,7 @@ const Meals = () => {
 };
 
 export default Meals;
+
+export {
+    metadata
+}

@@ -3,6 +3,18 @@ import classes from "./page.module.css";
 import { getMeal } from "@/lib/meals";
 import { notFound } from "next/navigation";
 
+// 동적 메타데이터 설정
+const generateMeatadata = async ({ params: { slug } }) => {
+    const meal = getMeal(slug);
+    if (!meal) {
+        notFound();
+    }
+    return {
+        title: meal.title,
+        description: meal.summary
+    };
+};
+
 const MealDetail = ({ params: { slug } }) => {
     const meal = getMeal(slug);
     
@@ -49,3 +61,7 @@ const MealDetail = ({ params: { slug } }) => {
 }
 
 export default MealDetail;
+
+export {
+    generateMeatadata
+}
