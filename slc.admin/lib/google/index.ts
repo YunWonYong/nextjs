@@ -10,7 +10,19 @@ type googleSheetInfo = {
     privateKeyId: string,
     clientEmail: string,
     spreadSheetid: string
-} 
+}
+
+export type Sheet = {
+    columns: string[],
+    rows: string[][],
+};
+
+export type Sheets = {
+    sheetNames: string[],
+    info: obj<Sheet>,
+};
+
+let catchingGoogleSheet: Sheets | null = null;
 
 const googleSheetScope = "https://www.googleapis.com/auth/spreadsheets";
 
@@ -40,30 +52,33 @@ const getGameBySheetInstance = async (game: string) => {
     return info;
 };
 
-const fetchingGameByGoogleSheet = async (game: string) => {
+const fetchingGameByGoogleSheet = async (game: string): Promise<Sheets> => {
+    if (catchingGoogleSheet !== null) {
+        return catchingGoogleSheet;
+    }
     const { sheet, spreadSheetId } = await getGameBySheetInstance(game);
     const sheetNames = await fetchSheetNames(sheet, spreadSheetId);
-    const sheetDatas: obj<obj<string>[]> = {};
 
     let i = 0;
     let sheetName = "";
     const range = sheetNames.length;
+    const sheets: Sheets = {
+        sheetNames: [],
+        info: {}
+    };
+
     while(i < range) {
         sheetName = sheetNames[i];
-        const list: obj<string>[] = [];
+        sheets.sheetNames.push(sheetName);
         const { columns, values } = await fetchSheetData(sheet, spreadSheetId, sheetName);
-        values.forEach((value: string[]) => {
-            const sheetData: obj<string> = {};
-            value.forEach((el: string, index: number) => {
-                sheetData[columns[index]] = el;
-            });
-            list.push(sheetData);
-        });
-        sheetDatas[sheetName] = list;
+        sheets.info[sheetName] = {
+            columns,
+            rows: values
+        };
         ++i;
     }
-
-    return sheetDatas;
+    catchingGoogleSheet = sheets;
+    return sheets;
 };
 
 const fetchingGameByGoogleSheetColumns = async (game: string) => {
@@ -76,7 +91,7 @@ const fetchingGameByGoogleSheetValues = async (game: string, sheetName: string) 
     const { sheet, spreadSheetId } = await getGameBySheetInstance(game);
     const { columns, values } = await fetchSheetData(sheet, spreadSheetId, sheetName);
     return [columns, values];
-}
+};
 
 const fetchSheetNames = (sheetInstance: sheets_v4.Sheets, sheetId: string): Promise<string[]> => {
     return new Promise(( resolve, rejects ) => {
@@ -84,7 +99,7 @@ const fetchSheetNames = (sheetInstance: sheets_v4.Sheets, sheetId: string): Prom
             spreadsheetId: sheetId,
         }).then((response) => {
             const { data } = response;
-            const { sheets } = data;
+            const { sheets,  } = data;
             if (!sheets) {
                 rejects("Fetching google sheet names failed.")
                 return;
