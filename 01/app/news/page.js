@@ -1,4 +1,4 @@
-import Link from "next/link";
+import NewsList from "@/components/NewsList";
 import { DUMMY_NEWS } from "@/dummy-news";
 const NewsPage = () => {
     return (
