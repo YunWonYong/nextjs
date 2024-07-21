@@ -22,6 +22,12 @@ const FilteredNewsPage = ({ params: { filter } }) => {
     if (news && news.length > 0) {
         newsContent = <NewsList news={ news } />
     }
+
+    if (seletedYear && !getAvailableNewsYears().includes(+seletedYear) ||
+        (seletedMonth && !getAvailableNewsMonths(seletedYear).includes(+seletedMonth))
+    ) {
+        throw new Error("Invalid filter.");
+    }
     return (
     <>
         <header id="archive-header">
