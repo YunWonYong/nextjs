@@ -1,4 +1,5 @@
 import { DUMMY_NEWS } from "@/dummy-news";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 const NewsDetailPage = ({params: { id }}) => {
     const newsItem = DUMMY_NEWS.find(({ slug }) => slug === id);
@@ -10,10 +11,12 @@ const NewsDetailPage = ({params: { id }}) => {
     return (
         <article className="news-article">
             <header>
-                <img 
-                    src={ `/images/news/${newsItem.image}` }
-                    alt={ newsItem.title }
-                />
+                <Link href={ `/news/${id}/image` }>
+                    <img 
+                        src={ `/images/news/${newsItem.image}` }
+                        alt={ newsItem.title }
+                    />
+                </Link>
                 <h1>
                     {
                         newsItem.title
