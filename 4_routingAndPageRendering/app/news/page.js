@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+import { DUMMY_NEWS } from "@/dummy-news";
 const NewsPage = () => {
     return (
         <> 
@@ -7,21 +7,22 @@ const NewsPage = () => {
                 News Page
             </h1>
             <ul className="news-list">
-                <li>
-                    <Link href="/news/new-1">
-                        new-1
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/news/new-2">
-                        new-2
-                    </Link>
-                </li>
-                <li>
-                    <Link href="/news/new-3">
-                        new-3
-                    </Link>
-                </li>
+                {
+                    DUMMY_NEWS.map((newsItem) => {
+                        return (
+                            <li key={ newsItem.id }>
+                                <Link href={ `/news/${newsItem.slug}` }>
+                                    <img src={ `/images/news/${newsItem.image}` } alt={ newsItem.title } />
+                                    <span>
+                                        {
+                                            newsItem.title
+                                        }
+                                    </span>
+                                </Link>
+                            </li>
+                        );
+                    })
+                }
             </ul>
         </> 
     );
