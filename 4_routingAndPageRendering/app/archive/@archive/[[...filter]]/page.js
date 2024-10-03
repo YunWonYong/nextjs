@@ -10,13 +10,13 @@ const YearArchivePage = ({ params: { filter } }) => {
     const selectedMonth = filter?.[1];
     let news = null;
     if (selectedYear && !links.includes(+selectedYear)) {
-        new Error("Invalid filter.");
+        throw new Error("Invalid filter.");
     } else if (selectedYear) {
         links = getAvailableNewsMonths(selectedYear);
     }
 
     if (selectedMonth && !links.includes(+selectedMonth)) {
-        new Error("Invalid filter.");
+        throw new Error("Invalid filter.");
     }
     
     if (selectedYear && selectedMonth) {
