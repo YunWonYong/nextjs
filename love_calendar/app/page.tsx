@@ -1,8 +1,10 @@
+import Calendar from "@/components/calendar";
+import { getCurrentYM } from "@/lib/calendar";
+
 const Home = () => {
+    const ym = getCurrentYM();
     return (
-        <div>
-            home
-        </div>
+        <Calendar year={ ym.year } month={ ym.month } />
     );
 };
 
