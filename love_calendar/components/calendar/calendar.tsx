@@ -1,16 +1,13 @@
 import { FC } from "react";
 import { getDaysByYM } from "@/lib/calendar";
 import { DAY_NAME } from "@/lib/date";
+import CalendarHeader from "./layouts/header";
 
 
 const Calendar: FC<{ year: string, month: string }> = ({ year, month }) => {
     return (
         <section>
-            <header>
-                {
-                    `${year}.${month}`
-                }
-            </header>
+            <CalendarHeader year={ year } month={ month } />
             <article
                 style={{
                     display: "grid",

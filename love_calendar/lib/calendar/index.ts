@@ -1,4 +1,4 @@
-import { getCurrentYMD, getDays } from "@/lib/date";
+import { getCurrentYMD, getDays, MONTH_NAME } from "@/lib/date";
 
 const getCurrentYM = () => {
     const { year, month, monthName } = getCurrentYMD();
@@ -48,6 +48,10 @@ const getDaysByYM = (year: string, month: string) => {
     });
 };
 
+const getMonthName = (month: string) => {
+    return MONTH_NAME[parseInt(month) - 1];
+};
+
 const getCalendarFormat = (i: number): string => {
     if (i < 10) {
         return "0" + i;
@@ -57,5 +61,6 @@ const getCalendarFormat = (i: number): string => {
 
 export {
     getCurrentYM,
-    getDaysByYM
+    getDaysByYM,
+    getMonthName
 }
