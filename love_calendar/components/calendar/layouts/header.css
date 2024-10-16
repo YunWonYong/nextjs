@@ -19,4 +19,5 @@
 
 .calendar__h_content_select:hover {
     text-decoration: underline;
+    cursor: pointer;
 }

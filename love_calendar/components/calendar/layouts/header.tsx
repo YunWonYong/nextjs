@@ -1,12 +1,17 @@
 "use client";
 
-import { getMonthName } from "@/lib/calendar";
 import { FC } from "react";
+import { getMonthName } from "@/lib/calendar";
+import useModal from "@/components/modal/hooks";
+import { useGlobalDimmed } from "@/components/dimmed/hooks";
+
 
 import "./header.css";
 
 const CalendarHeader: FC<{ year: string, month: string }> = ({ year, month }) => {
     const monthName = getMonthName(month);
+    
+    const { on, off } = useGlobalDimmed();
     return (
         <header
             className="calendar__h"
@@ -23,7 +28,7 @@ const CalendarHeader: FC<{ year: string, month: string }> = ({ year, month }) =>
             >
                 <span
                     className="calendar__h_content_select"
-                    onClick={ () => console.log(year) }
+                    onClick={ on }
                 >
                     {
                         year
@@ -34,7 +39,7 @@ const CalendarHeader: FC<{ year: string, month: string }> = ({ year, month }) =>
                 </span>
                 <span
                     className="calendar__h_content_select"
-                    onClick={ () => console.log(month) }
+                    onClick={ off }
                 >
                     {
                         month

@@ -2,11 +2,18 @@ import { FC } from "react";
 import { getDaysByYM } from "@/lib/calendar";
 import { DAY_NAME } from "@/lib/date";
 import CalendarHeader from "./layouts/header";
+import { useGlobalDimmed } from "../dimmed/hooks";
 
 
 const Calendar: FC<{ year: string, month: string }> = ({ year, month }) => {
+
     return (
-        <section>
+        <section
+            style={{
+                position: "relative",
+                zIndex: 1
+            }}
+        >
             <CalendarHeader year={ year } month={ month } />
             <article
                 style={{
