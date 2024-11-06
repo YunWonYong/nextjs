@@ -1,5 +1,8 @@
-import GlobalDimmedProvider from "@/components/dimmed/global/context/GlobalDimmedProvider";
 import { FC, ReactNode } from "react";
+
+import { ModalProvider } from "@/components/modal/context/provider";
+
+import "@/components/dimmed/index.css";
 
 const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
     return (
@@ -8,11 +11,12 @@ const RootLayout: FC<{ children: ReactNode }> = ({ children }) => {
                 id="body"
                 style={{ margin: 0 }}
             >
-                <GlobalDimmedProvider>
+                <div id="global_dimmed"></div>
+                <ModalProvider>
                     {
                         children
                     }
-                </GlobalDimmedProvider>
+                </ModalProvider>
             </body>
         </html>
     );
