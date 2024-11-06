@@ -1,12 +1,9 @@
 import { FC } from "react";
 import { getDaysByYM } from "@/lib/calendar";
 import { DAY_NAME } from "@/lib/date";
-import CalendarHeader from "./layouts/header";
-import { useGlobalDimmed } from "../dimmed/hooks";
-
+import CalendarHeader from "./layouts/headers";
 
 const Calendar: FC<{ year: string, month: string }> = ({ year, month }) => {
-
     return (
         <section
             style={{
@@ -84,64 +81,8 @@ const Calendar: FC<{ year: string, month: string }> = ({ year, month }) => {
                 }
             </article>
         </section>
-        // <M year={ year } />
     );
 };
-
-// const M: FC<{ year: number }> = ({ year }) => {
-//     const d = new Date(Date.now());
-//     return (
-//         <R year={ year } month={ d.getMonth() }>
-//         </R>
-//     );
-// };
-
-// const d: string[] = [ "SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
-// const R: FC<{ year: number, month: number }> = ({ year, month }) => {
-//     return (
-//         <>
-//             <section>
-//                 {
-//                     `${year}.${calendarFormat(month + 1)}`
-//                 }
-//             </section>
-//             {
-//                 d.map((str) => {
-//                     return (
-//                         <span
-//                             key={ str }
-//                             style={{
-//                                 paddingRight: "1em"
-//                             }}
-//                         >
-//                             {
-//                                 str
-//                             }
-//                         </span>
-//                     );
-//                 })
-//             }
-//             <span>
-//                 {
-//                     Array.from({ length: 40 }).map((_, index) => {
-//                         ++index;
-//                         return (
-//                             <div key={ index }>
-//                                 {
-//                                     new Date(year, month, index).getDay() + ", " + new Date(year, month, index).getDate()
-//                                 }
-//                             </div>
-//                         );
-//                     })
-//                 }
-//             </span>
-//         </>
-//     );
-// }
-
-const calendarFormat = (i: number): string => {
-    return `${i < 10? "0" + i: i}`;
-}
 
 export {
     Calendar
