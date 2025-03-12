@@ -59,8 +59,31 @@ const getCalendarFormat = (i: number): string => {
     return `${i}`;
 };
 
+const yearRegexp = /^[1|2]{1}[0-9]{3}$/;
+const monthRegexp = /^([0]{1}[1-9]{1})|([1]+[0-2]{1})$/;
+
+const isAvailableYear = (year: string): boolean => {
+    if (!yearRegexp.test(year)) {
+        return false;
+    }
+
+    return isSupportedYear(parseInt(year));
+};
+
+const isAvailableMonth = (month: string): boolean => {
+    return monthRegexp.test(month);
+};
+
+const isSupportedYear = (year: number): boolean => {
+    const y = new Date().getFullYear();
+    const yy = y - year;
+    return Math.abs(yy) <= 100;
+};
+
 export {
     getCurrentYM,
     getDaysByYM,
-    getMonthName
+    getMonthName,
+    isAvailableYear,
+    isAvailableMonth,
 }
