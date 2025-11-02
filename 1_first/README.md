@@ -18,3 +18,20 @@
         4. URL만 바뀌고, 새로고침 없음.
  
     이렇게 동작하며 SSR의 초기 로딩 속도와 SEO 장점을 유지하며 CSR의 사용자에 친화적인 UX를 제공.
+# Chapter 2
+## Nextjs의 파일 시스템 규칙.
+1. page    
+폴더 이름 기준으로 경로가 정해지고 page.js 파일이 있으면 해당 파일의 내용으로 렌더링됨.    
+ex) /app/about/page.js 파일이 있을 때 브라우저에선 /about 경로로 접근함. 
+2. layout    
+1번에 설명한 내용에서 /app/about 폴더에 layout.js 파일이 없고 /app/layout.js 파일이 있으면 /app/about/page.js가 /app/layout.js 파일의 자식으로 렌더링됨.
+3. not-found    
+2번에 설명한 방식대로 동작하고 Not Found 오류에 대한 폴백 페이지.
+4. error    
+2번에 설명한 방식대로 동작하고 기타 오류에 대한 폴백 페이지.    
+5. loading    
+2번에 설명한 방식대로 동작하고 데이터를 가져오는 동한 표시되는 폴백 페이지.
+6. route    
+/app/api 경로에 생성되며 렌더링에 필요한 파일이 아닌 데이터를 조회 및 조작할 때 사용.
+
+다른 파일들도 있지만 많이 사용되는 파일은 1번부터 6번까지인 거 같다. [관련 공식 문서](https://nextjs.org/docs/app/api-reference/file-conventions)
