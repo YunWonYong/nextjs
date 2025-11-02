@@ -34,7 +34,8 @@ ex) /app/about/page.js 파일이 있을 때 브라우저에선 /about 경로로 
 6. route    
 /app/api 경로에 생성되며 렌더링에 필요한 파일이 아닌 데이터를 조회 및 조작할 때 사용.
 
-다른 파일들도 있지만 많이 사용되는 파일은 1번부터 6번까지인 거 같다. [관련 공식 문서](https://nextjs.org/docs/app/api-reference/file-conventions)
+다른 파일들도 있지만 많이 사용되는 파일은 1번부터 6번까지인 거 같다.  
+[파일 시스템 공식 문서](https://nextjs.org/docs/app/api-reference/file-conventions)
 
 # Chapter 3
 ## 동적 라우팅
@@ -50,3 +51,4 @@ export default function Page({ params }) {
   return <h1>{params.slug}</h1>;
 }
 ```
+[동적 라우팅 공식 문서](https://nextjs.org/docs/app/api-reference/file-conventions/dynamic-routes)
