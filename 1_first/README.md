@@ -35,3 +35,18 @@ ex) /app/about/page.js 파일이 있을 때 브라우저에선 /about 경로로 
 /app/api 경로에 생성되며 렌더링에 필요한 파일이 아닌 데이터를 조회 및 조작할 때 사용.
 
 다른 파일들도 있지만 많이 사용되는 파일은 1번부터 6번까지인 거 같다. [관련 공식 문서](https://nextjs.org/docs/app/api-reference/file-conventions)
+
+# Chapter 3
+## 동적 라우팅
+Nextjs에서는 폴더 경로가 url의 경로이기 때문에 폴더명에 어떤 특수문자를 사용하냐에 따라 동작 방식이 정해진다.   
+동적 라우팅은 폴더명에 대괄호 특수 문자를 사용하고 대괄호안에는 URL 세그먼트를 식별할 때 필요한 변수명을 입력하여 구성한다.    
+
+예를 들어 /app/blog/\[slug\]/page.js 이렇게 구성하면 /blog/post-1, /blog/post-2 처럼 /blog 뒤에 아무거나 입력해도 page.js 파일에서 URL 세그먼트의 식별자인 slug 변수로 post-1인지 post-2인지 확인하여 처리할 수 있다. 
+
+```tsx
+// app/blog/[slug]/page.js
+export default function Page({ params }) {
+  console.log(params.slug); // "post-1" 또는 "post-2"
+  return <h1>{params.slug}</h1>;
+}
+```
