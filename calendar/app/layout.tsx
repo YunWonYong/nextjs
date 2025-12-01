@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ReactNode } from "react";
 
+import "@/app/global.css";
 
 export const metadata: Metadata = {
     title: "Lovendar",
